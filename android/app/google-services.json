@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1057409738494",
+    "project_id": "nexus-4dd9e",
+    "storage_bucket": "nexus-4dd9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057409738494:android:99562baa13ff7d493727af",
+        "android_client_info": {
+          "package_name": "com.example.nexus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057409738494-jljfer2gn28nnshm3g71goi70sf1rn2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt2AmKPYZuiTD0ku7-SGEkJenyQUD6ZTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057409738494-jljfer2gn28nnshm3g71goi70sf1rn2a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1057409738494-a0vqqka9ol40m1qk304k6fmfvb37utuc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nexus"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
