@@ -16,10 +16,13 @@ class _MainScreenState extends State<MainScreen> {
   final _controller = PageController();
 
   void goToPage(int index) {
-    setState(() {
-      _controller.animateToPage(index,
-          curve: Curves.easeInOut, duration: const Duration(milliseconds: 300));
-    });
+    setState(
+      () {
+        _controller.animateToPage(index,
+            curve: Curves.easeInOut,
+            duration: const Duration(milliseconds: 300));
+      },
+    );
   }
 
   @override

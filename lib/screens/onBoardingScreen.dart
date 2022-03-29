@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nexus/utils/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'mainScreen.dart';
+
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
@@ -128,9 +130,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         child: Center(
           child: isLastPage
               ? Center(
-                  child: Text(
-                    "Get Started",
-                    style: textStyle,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Get Started",
+                      style: textStyle,
+                    ),
                   ),
                 )
               : Row(

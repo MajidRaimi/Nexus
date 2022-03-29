@@ -44,26 +44,26 @@ class _InterestsScreenState extends State<InterestsScreen> {
           "Select Your Favorite Topics",
           style: TextStyle(color: kMainColor),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onTap: () {
-                print(getInterests());
-              },
-              child: const Icon(
-                Icons.arrow_circle_right,
-                color: kMainColor,
-                size: 34,
-              ),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () async {
+              return Navigator.pop(context , getInterests());
+            },
+            child: const Icon(
+              Icons.arrow_circle_left,
+              color: kMainColor,
+              size: 34,
             ),
           ),
-        ],
+        ),
       ),
       body: GridView.builder(
         itemCount: interestsList.length,
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisExtent: 120,
+        ),
         itemBuilder: (context, i) {
           return Padding(
             padding: const EdgeInsets.all(20),

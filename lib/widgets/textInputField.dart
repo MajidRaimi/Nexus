@@ -31,7 +31,7 @@ class TextFieldInput extends StatelessWidget {
     } else {
       return const Icon(Icons.visibility_off, color: Colors.black54);
     }
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +45,7 @@ class TextFieldInput extends StatelessWidget {
             color: kMainColor, fontSize: 16, fontWeight: FontWeight.w400),
         contentPadding: const EdgeInsets.only(top: 14.0),
         prefixIcon: prefixIcon,
+        prefix: (keyboardType == TextInputType.number) ? Text("") : null,
         suffixIcon: (isPass) ? visibilityMethod() : null,
         suffix: Text(
           isOptional ? "Optional" : "*",

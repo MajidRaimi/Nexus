@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kMainColor,
         platform: TargetPlatform.iOS,
       ),
-      home: MainScreen(),
+      home: LoginScreen(),
     );
   }
 }
