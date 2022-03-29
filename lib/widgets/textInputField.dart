@@ -31,7 +31,7 @@ class TextFieldInput extends StatelessWidget {
     } else {
       return const Icon(Icons.visibility_off, color: Colors.black54);
     }
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,10 @@ class TextFieldInput extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(
-            color: kMainColor, fontSize: 16, fontWeight: FontWeight.w400),
+          color: kMainColor,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+        ),
         contentPadding: const EdgeInsets.only(top: 14.0),
         prefixIcon: prefixIcon,
         prefix: (keyboardType == TextInputType.number) ? Text("") : null,

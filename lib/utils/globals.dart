@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../screens/homeScreen.dart';
+import '../screens/postsScreen.dart';
+
 List<Widget> kScreens = [
-  Scaffold(
-    backgroundColor: Colors.amber,
-  ),
+  HomeScreen() , 
   Scaffold(
     backgroundColor: Colors.brown,
   ),
-  Scaffold(
-    backgroundColor: Colors.teal,
-  ),
+  PostsScreen() , 
   Scaffold(
     backgroundColor: Colors.purple,
   ),

@@ -113,15 +113,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     width: 170,
                     height: 50,
-                    child:  Center(
-                      child: _isLoading ? const CircularProgressIndicator(color: kBackgroundColor,) : const Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: kBackgroundColor,
-                        ),
-                      ),
+                    child: Center(
+                      child: _isLoading
+                          ? const CircularProgressIndicator(
+                              color: kBackgroundColor,
+                            )
+                          : const Text(
+                              "Login",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: kBackgroundColor,
+                              ),
+                            ),
                     ),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),

@@ -4,6 +4,10 @@ import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
 import '../utils/globals.dart';
+import '../utils/showModalBottomSheet.dart';
+import 'addEventScreen.dart';
+import 'addPostScreen.dart';
+import 'addWorkshopScreen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -74,19 +78,25 @@ class _MainScreenState extends State<MainScreen> {
                   Icons.add,
                   color: kMainColor,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  showModal(context, const AddPostScreen());
+                }),
             SCItem(
                 icon: const Icon(
                   Icons.event,
                   color: kMainColor,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  showModal(context, const AddEventScreen());
+                }),
             SCItem(
                 icon: const Icon(
                   Icons.work_outline,
                   color: kMainColor,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  showModal(context, const AddWorkshopScreen());
+                }),
           ],
         ),
         child: Container(
