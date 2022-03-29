@@ -3,10 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nexus/screens/signUpScreen.dart';
 import 'package:nexus/utils/constants.dart';
 
-import '../resources/authMethods.dart';
-import '../utils/alertDialog.dart';
 import '../widgets/textInputField.dart';
-import 'mainScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -18,38 +15,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _isLoading = false;
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-
-  loginUser() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    String result = await AuthMethods()
-        .loginUser(_emailController.text, _passwordController.text);
-
-    setState(() {
-      _isLoading = false;
-    });
-
-    if (result == "Logged In User Successfully") {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MainScreen(),
-        ),
-      );
-    } else {
-      showAdvanceDialog(context,
-          title: "Could Not Login", massage: "Wrong Password Or Email");
-    }
   }
 
   @override
@@ -107,25 +78,16 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
-                  onTap: () async {
-                    await loginUser();
-                  },
+                  onTap: () {},
                   child: Container(
                     width: 170,
                     height: 50,
-                    child: Center(
-                      child: _isLoading
-                          ? const CircularProgressIndicator(
-                              color: kBackgroundColor,
-                            )
-                          : const Text(
-                              "Login",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: kBackgroundColor,
-                              ),
-                            ),
+                    child: const Center(
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w700 , color : kBackgroundColor),
+                      ),
                     ),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -143,19 +105,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const SignUpScreen(),
                         ),
-                      );
+                      ) ;
                     },
                     child: const Text(
                       "Sign Up",
                       style: TextStyle(
-                        color: kMainColor,
-                        fontWeight: FontWeight.w700,
-                      ),
+                          color: kMainColor, fontWeight: FontWeight.w700),
                     ),
                   ),
                 ],
