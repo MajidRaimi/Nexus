@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../utils/constants.dart';
 import '../widgets/postWidget.dart';
 
 class PostsScreen extends StatefulWidget {
-  PostsScreen({Key? key}) : super(key: key);
+  const PostsScreen({Key? key}) : super(key: key);
 
   @override
   State<PostsScreen> createState() => _PostsScreenState();
@@ -37,8 +38,9 @@ class _PostsScreenState extends State<PostsScreen> {
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const SpinKitFadingCube(
+              color: kMainColor,
+              size: 80,
             );
           }
 
@@ -46,7 +48,10 @@ class _PostsScreenState extends State<PostsScreen> {
             return const Center(
               child: Text(
                 "Not Posts Found",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: kMainColor),
               ),
             );
           }

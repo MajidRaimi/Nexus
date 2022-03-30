@@ -53,69 +53,71 @@ class _AddPostScreenState extends State<AddPostScreen> {
       height: MediaQuery.of(context).size.height * 0.95,
       color: kBackgroundColor,
       child: SafeArea(
-        child: _isLoading? const SpinKitFadingCube(
-          color : kMainColor , 
-          size: 80,
-        ) : Scaffold(
-          appBar: AppBar(
-            leading: GestureDetector(
-              child:
-                  const Icon(Icons.arrow_downward_outlined, color: kMainColor),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            elevation: 0,
-            backgroundColor: kBackgroundColor,
-            title: const Text(
-              "Add Post",
-              style: TextStyle(
+        child: _isLoading
+            ? const SpinKitFadingCube(
                 color: kMainColor,
-              ),
-            ),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 40,
-            ),
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                const SizedBox(height: 42),
-                TextFieldInput(
-                  hintText: "Writer",
-                  controller: _writerController,
-                  keyboardType: TextInputType.text,
-                  prefixIcon: const Icon(Icons.person, color: kMainColor),
-                ),
-                const SizedBox(height: 42),
-                MultiTextFieldLines(controller: _postController),
-                const SizedBox(height: 68),
-                GestureDetector(
-                  onTap: () async {
-                    await uploadPost() ; 
-                  },
-                  child: Center(
-                    child: Container(
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 30, horizontal: 50),
-                        child: Text(
-                          "Add Post",
-                          style:
-                              TextStyle(color: kBackgroundColor, fontSize: 16),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                          color: kMainColor,
-                          borderRadius: BorderRadius.circular(12)),
+                size: 80,
+              )
+            : Scaffold(
+                appBar: AppBar(
+                  leading: GestureDetector(
+                    child: const Icon(Icons.arrow_downward_outlined,
+                        color: kMainColor),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  elevation: 0,
+                  backgroundColor: kBackgroundColor,
+                  title: const Text(
+                    "Add Post",
+                    style: TextStyle(
+                      color: kMainColor,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                  ),
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      const SizedBox(height: 42),
+                      TextFieldInput(
+                        hintText: "Writer",
+                        controller: _writerController,
+                        keyboardType: TextInputType.text,
+                        prefixIcon: const Icon(Icons.person, color: kMainColor),
+                      ),
+                      const SizedBox(height: 42),
+                      MultiTextFieldLines(controller: _postController),
+                      const SizedBox(height: 68),
+                      GestureDetector(
+                        onTap: () async {
+                          await uploadPost();
+                        },
+                        child: Center(
+                          child: Container(
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 30, horizontal: 50),
+                              child: Text(
+                                "Add Post",
+                                style: TextStyle(
+                                    color: kBackgroundColor, fontSize: 16),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                color: kMainColor,
+                                borderRadius: BorderRadius.circular(12)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
       ),
     );
   }

@@ -37,6 +37,8 @@ class AuthMethods {
           "Password": password,
           "Interests": interestsList,
           "Can Post": false,
+          "Club Admin": false,
+          "Club Uid" : ""
         });
         result = "Success";
       } else {

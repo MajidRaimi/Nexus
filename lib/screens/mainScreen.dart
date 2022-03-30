@@ -3,6 +3,8 @@ import 'package:nexus/utils/constants.dart';
 import 'package:spincircle_bottom_bar/modals.dart';
 import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 
+import '../resources/firestoreMethods.dart';
+import '../utils/alertDialog.dart';
 import '../utils/globals.dart';
 import '../utils/showModalBottomSheet.dart';
 import 'addEventScreen.dart';
@@ -29,9 +31,35 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
+  bool isClubAdmin = false;
+  canPostCheck() async {
+    bool checkFirebase = await FirestoreMethods().canPost();
+
+    setState(() {
+      isClubAdmin = checkFirebase;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    canPostCheck();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: isClubAdmin
+          ? Padding(
+              child: FloatingActionButton(
+                onPressed: null,
+                backgroundColor:  kMainColor , 
+                child: Icon(Icons.grade_outlined),
+              ),
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.height * 0.12),
+            )
+          : null,
       body: SpinCircleBottomBarHolder(
         bottomNavigationBar: SCBottomBarDetails(
           bnbHeight: 80,
@@ -78,24 +106,42 @@ class _MainScreenState extends State<MainScreen> {
                   Icons.add,
                   color: kMainColor,
                 ),
-                onPressed: () {
-                  showModal(context, const AddPostScreen());
+                onPressed: () async {
+                  if (await FirestoreMethods().canPost()) {
+                    showModal(context, const AddPostScreen());
+                  } else {
+                    showAdvanceDialog(context,
+                        title: "Can't Post",
+                        massage: "Ask You'r Club Admin To Get Permission");
+                  }
                 }),
             SCItem(
                 icon: const Icon(
                   Icons.event,
                   color: kMainColor,
                 ),
-                onPressed: () {
-                  showModal(context, const AddEventScreen());
+                onPressed: () async {
+                  if (await FirestoreMethods().canPost()) {
+                    showModal(context, const AddEventScreen());
+                  } else {
+                    showAdvanceDialog(context,
+                        title: "Can't Event",
+                        massage: "Ask You'r Club Admin To Get Permission");
+                  }
                 }),
             SCItem(
                 icon: const Icon(
                   Icons.work_outline,
                   color: kMainColor,
                 ),
-                onPressed: () {
-                  showModal(context, const AddWorkshopScreen());
+                onPressed: () async {
+                  if (await FirestoreMethods().canPost()) {
+                    showModal(context, const AddWorkshopScreen());
+                  } else {
+                    showAdvanceDialog(context,
+                        title: "Can't Workshop",
+                        massage: "Ask You'r Club Admin To Get Permission");
+                  }
                 }),
           ],
         ),

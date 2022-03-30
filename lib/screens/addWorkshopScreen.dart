@@ -1,6 +1,8 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
+import '../resources/firestoreMethods.dart';
+import '../utils/alertDialog.dart';
 import '../utils/constants.dart';
 import '../utils/datePicker.dart';
 import '../widgets/textInputField.dart';
@@ -38,6 +40,7 @@ class _AddWorkshopScreenState extends State<AddWorkshopScreen> {
     });
   }
 
+  bool _isLoading = false;
   Future pickDate(BuildContext context) async {
     final initialDate = DateTime.now();
     final newDate = await showDatePicker(
@@ -68,6 +71,31 @@ class _AddWorkshopScreenState extends State<AddWorkshopScreen> {
     return "${selectedTime?.hour} : ${selectedTime?.minute}";
   }
 
+  uploadWorkshop() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String result = await FirestoreMethods().uploadWorkshop(
+      tutor: _tutorController.text,
+      aboutWhat: _aboutController.text,
+      time: getTimeText(),
+      date: selectedDate!,
+      location: _linkController.text,
+      title: _titleController.text,
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (result == "Success") {
+      Navigator.pop(context);
+    } else {
+      showAdvanceDialog(context,
+          title: "Ooops !", massage: "Some Error Occurred");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -78,7 +106,7 @@ class _AddWorkshopScreenState extends State<AddWorkshopScreen> {
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () async {
-              print(selectedDate);
+              await uploadWorkshop();
             },
             backgroundColor: kMainColor,
             child: const Icon(Icons.add),

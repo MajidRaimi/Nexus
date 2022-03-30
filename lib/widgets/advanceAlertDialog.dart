@@ -17,13 +17,14 @@ class AdvanceCustomAlert extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           Container(
-            height: 200,
+            height: 222,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10, 70, 10, 10),
               child: Column(
                 children: [
                   Text(
                     title,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 20),
                   ),
@@ -32,6 +33,7 @@ class AdvanceCustomAlert extends StatelessWidget {
                   ),
                   Text(
                     massage,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(

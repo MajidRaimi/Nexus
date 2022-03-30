@@ -1,6 +1,8 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
+import '../resources/firestoreMethods.dart';
+import '../utils/alertDialog.dart';
 import '../utils/constants.dart';
 import '../utils/datePicker.dart';
 import '../widgets/textInputField.dart';
@@ -19,13 +21,37 @@ class _AddEventScreenState extends State<AddEventScreen> {
   final initialDate = DateTime.now();
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
-
+  bool _isLoading = false;
   @override
   void dispose() {
     super.dispose();
     _tutorController.dispose();
     _aboutController.dispose();
-    _linkController.dispose(); 
+    _linkController.dispose();
+  }
+
+  uploadEvent() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String result = await FirestoreMethods().uploadEvent(
+      name: _tutorController.text,
+      aboutWhat: _aboutController.text,
+      location: _linkController.text,
+      time: getTimeText(),
+      date: selectedDate!,
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (result == "Success") {
+      Navigator.pop(context);
+    } else {
+      showAdvanceDialog(context,
+          title: "Ooops !", massage: "Some Error Occurred");
+    }
   }
 
   Future pickTime(BuildContext context) async {
@@ -85,7 +111,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () async {
-              print(selectedDate);
+              await uploadEvent();
             },
             backgroundColor: kMainColor,
             child: const Icon(Icons.add),
