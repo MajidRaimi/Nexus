@@ -32,7 +32,7 @@ class _EventsScreenState extends State<EventsScreen> {
         if (snapshot.data!.docs.isEmpty) {
           return Center(
             child: Text(
-              "Not Posts Found",
+              "No Events Found",
               style: TextStyle(
                   fontSize: 16, fontWeight: FontWeight.bold, color: kMainColor),
             ),

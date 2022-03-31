@@ -31,6 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         clubName = snap['Name'];
         clubBanner = snap['Banner Url'];
         clubPhoto = snap['Photo Url'];
+        print(clubBanner);
       });
     } catch (e) {
       print(e.toString());
@@ -54,8 +55,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: MediaQuery.of(context).size.height * 0.33,
               child: Stack(
                 children: [
-                  Image(
-                    image: NetworkImage(clubBanner),
+                  const Image(
+                    image: AssetImage("assets/BannerImage.jpg"),
                     fit: BoxFit.fill,
                   ),
                   Positioned(
@@ -63,36 +64,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     left: 5,
                     child: Stack(
                       alignment: Alignment.center,
-                      children: [
-                        const CircleAvatar(
+                      children: const [
+                        CircleAvatar(
                           radius: 42,
                           backgroundColor: kMainColor,
                         ),
                         CircleAvatar(
                           radius: 40,
                           backgroundColor: kBackgroundColor,
-                          backgroundImage: NetworkImage(
-                            clubPhoto,
-                          ),
+                          backgroundImage: AssetImage("assets/default.png"),
                         ),
                       ],
                     ),
                   ),
-                  Positioned(
-                      child: Text(
-                        clubName,
-                        style: TextStyle(
-                            color: kMainColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                  const Positioned(
+                    child: Text(
+                      "Majid Saleh Al-Raimi",
+                      style: TextStyle(
+                        color: kMainColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
-                      bottom: 20,
-                      left: 20)
+                    ),
+                    bottom: 15,
+                    left: 20,
+                  )
                 ],
               ),
             ),
             Column(
-              children: [],
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      "    My Intrests : Programing , AI",
+                      style: TextStyle(color: kMainColor, fontSize: 20),
+                    )
+                  ],
+                )
+              ],
             )
           ],
         ),

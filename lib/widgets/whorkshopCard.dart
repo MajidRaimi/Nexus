@@ -32,16 +32,16 @@ class _WorkshopCardState extends State<WorkshopCard> {
                 Expanded(
                   flex: 5,
                   child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        color: Colors.red,
-                        child: const Image(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(
-                            "https://www.kindacode.com/wp-content/uploads/2020/10/Screen-Shot-2020-10-19-at-07.19.11.jpg",
-                          ),
-                        ),
-                      )),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Hero(
+                        tag: "1",
+                        child: Image(
+                            fit: BoxFit.fill,
+                            image: AssetImage("assets/workshopPNG.png")),
+                      ),
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: Container(

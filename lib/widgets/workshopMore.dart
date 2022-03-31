@@ -57,10 +57,11 @@ class _WorkshopMoreState extends State<WorkshopMore> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        child: Image(
-                          image: NetworkImage(
-                              "https://www.kindacode.com/wp-content/uploads/2020/10/Screen-Shot-2020-10-19-at-07.19.11.jpg"),
-                          fit: BoxFit.fill,
+                        child: Hero(
+                          tag: "1",
+                          child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage("assets/workshopPNG.png")),
                         ),
                       ),
                     ),
@@ -80,7 +81,8 @@ class _WorkshopMoreState extends State<WorkshopMore> {
                             style: textStyle,
                           ),
                           Text(
-                            "Date : ${(widget.snap['Date'] as Timestamp).toDate()} Time : ${widget.snap['Time']} ",
+                            "In 31 - 3 - 2021 At 6:00 PM" ,
+                            //"Date : ${(widget.snap['Date'] as Timestamp).toDate()} Time : ${widget.snap['Time']} ",
                             style: textStyle,
                           ),
                           Text(

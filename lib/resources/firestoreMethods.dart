@@ -116,7 +116,7 @@ class FirestoreMethods {
     return result;
   }
 
-  Future<bool> canPost() async {
+  Future<bool> clubAdmin() async {
     dynamic isAdmin = false;
 
     try {
@@ -136,4 +136,26 @@ class FirestoreMethods {
 
     return isAdmin;
   }
+
+  Future<bool> canPost() async {
+    dynamic isAdmin = false;
+
+    try {
+      // ignore: unrelated_type_equality_checks
+      await _firestore
+          .collection("users")
+          .doc(_auth.currentUser!.uid)
+          .get()
+          .then(
+        (value) {
+          isAdmin = value["Can Post"];
+        },
+      );
+    } catch (e) {
+      return false;
+    }
+
+    return isAdmin;
+  }
+
 }

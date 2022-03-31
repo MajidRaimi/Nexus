@@ -7,7 +7,7 @@ import '../screens/searchScreen.dart';
 
 List<Widget> kScreens = [
   const HomeScreen(),
-  Scaffold(),
+  SearchScreen() ,
   const PostsScreen(),
   ProfileScreen(uid: "w37MnDpE5daU86z068dM"),
 ];

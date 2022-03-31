@@ -33,10 +33,10 @@ class _MainScreenState extends State<MainScreen> {
 
   bool isClubAdmin = false;
   canPostCheck() async {
-    bool checkFirebase = await FirestoreMethods().canPost();
-
+    bool checkFirebase = await FirestoreMethods().clubAdmin();
     setState(() {
       isClubAdmin = checkFirebase;
+      
     });
   }
 
@@ -53,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
           ? Padding(
               child: FloatingActionButton(
                 onPressed: null,
-                backgroundColor:  kMainColor , 
+                backgroundColor: kMainColor,
                 child: Icon(Icons.grade_outlined),
               ),
               padding: EdgeInsets.only(
