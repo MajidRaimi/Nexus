@@ -81,7 +81,7 @@ class _WorkshopMoreState extends State<WorkshopMore> {
                             style: textStyle,
                           ),
                           Text(
-                            "In 31 - 3 - 2021 At 6:00 PM" ,
+                            "In 01 - 4 - 2021 At 6:00 PM" ,
                             //"Date : ${(widget.snap['Date'] as Timestamp).toDate()} Time : ${widget.snap['Time']} ",
                             style: textStyle,
                           ),

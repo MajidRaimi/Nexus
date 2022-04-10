@@ -86,12 +86,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         "Login",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w700 , color : kBackgroundColor),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: kBackgroundColor,
+                        ),
                       ),
                     ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: kMainColor),
+                      borderRadius: BorderRadius.circular(20),
+                      color: kMainColor,
+                    ),
                   ),
                 ),
               ),
@@ -110,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(
                           builder: (context) => const SignUpScreen(),
                         ),
-                      ) ;
+                      );
                     },
                     child: const Text(
                       "Sign Up",

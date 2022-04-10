@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1057409738494:android:99562baa13ff7d493727af",
+        "mobilesdk_app_id": "1:1057409738494:android:8b1ca7836ec610bf3727af",
         "android_client_info": {
-          "package_name": "com.example.nexus"
+          "package_name": "com.majidraimi.nexus"
         }
       },
       "oauth_client": [
